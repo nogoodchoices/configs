@@ -1,0 +1,31 @@
+term xterm-color
+hardstatus alwayslastline
+hardstatus string '%{= y}[%{b}%H%{y}]%= %{=y}%?%-Lw%?%{y}(%{B}%n*%f%t%?(%u)%?%{y})%{y}%?%+Lw%?%?%= %{y}[%{b}%c%{y}]'
+startup_message off
+defscrollback 5000
+chdir "$HOME/odoo"
+
+# Default screens
+screen -t "server" 0
+stuff "vagrant up ^M"
+screen -t code0  1
+stuff "cd ls_addons ^M"
+screen -t code1  2
+stuff "cd ls_addons ^M"
+screen -t code3  3
+stuff "cd ls_addons ^M"
+screen -t layout  4
+screen -t css  5
+screen -t search0  6
+screen -t search1  7
+stuff "vagrant ssh"
+screen -t MO! 8
+stuff "cd log; tailf openerp.log ^M"
+
+# Bind region up/down to keys
+bind j focus up
+bind k focus down
+# Bind region setup to a key
+bind o eval split split 'resize 55' focus 'resize 55' 'select 2' focus 'select 0'
+
+vbell off
