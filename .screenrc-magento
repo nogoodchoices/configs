@@ -3,19 +3,19 @@ hardstatus alwayslastline
 hardstatus string '%{= y}[%{b}%H%{y}]%= %{=y}%?%-Lw%?%{y}(%{B}%n*%f%t%?(%u)%?%{y})%{y}%?%+Lw%?%?%= %{y}[%{b}%c%{y}]'
 startup_message off
 defscrollback 5000
-chdir "$HOME/Environment/docker/docker_dev/odoo"
+chdir "$HOME/Environment/docker/docker_dev/magento"
 
 # Default screens
 screen -t "server" 0
 stuff "docker-compose up -d ^M"
 screen -t code0 1
-stuff "cd ls_addons10 ^M"
+stuff "cd magento2 ^M"
 screen -t code1 2
-stuff "cd ls_addons10 ^M"
+stuff "cd magento2 ^M"
 screen -t code3  3
-stuff "cd ls_addons10 ^M"
+stuff "cd magento2 ^M"
 screen -t database  4
-stuff "docker-compose exec odoo_db psql -U postgres ^M"
+stuff "mysql -u root ^M"
 
 # Split on open
 eval 'split -v' 'split -v' 'select 0' 'resize 110' 'focus right' 'select 1' 'resize 110' 'focus right' 'split' 'select 2' 'focus down' 'split' 'select 3' 'focus down' 'select 4' focus

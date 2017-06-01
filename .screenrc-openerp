@@ -3,7 +3,7 @@ hardstatus alwayslastline
 hardstatus string '%{= y}[%{b}%H%{y}]%= %{=y}%?%-Lw%?%{y}(%{B}%n*%f%t%?(%u)%?%{y})%{y}%?%+Lw%?%?%= %{y}[%{b}%c%{y}]'
 startup_message off
 defscrollback 5000
-chdir "$HOME/erp"
+chdir "$HOME/Desktop/development/erp/openerp"
 
 # Default screens
 screen -t "server" 0

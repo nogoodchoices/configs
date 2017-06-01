@@ -1,0 +1,29 @@
+term xterm-color
+hardstatus alwayslastline
+hardstatus string '%{= y}[%{b}%H%{y}]%= %{=y}%?%-Lw%?%{y}(%{B}%n*%f%t%?(%u)%?%{y})%{y}%?%+Lw%?%?%= %{y}[%{b}%c%{y}]'
+startup_message off
+defscrollback 5000
+
+# Default screens
+screen -t "usrs-www01" 0
+stuff "ssh usrs-www01 ^M cd /var/www/magento/ ^M"
+screen -t "usrs-www02" 1
+stuff "ssh usrs-www02 ^M cd /var/www/magento/ ^M"
+screen -t "usrs-db01" 2
+stuff "ssh usrs-db01 ^M mysql -u root ^M use magento_us; ^M"
+screen -t "usrs-lb03" 3
+stuff "ssh usrs-lb03 ^M"
+
+# Split on open
+eval 'split -v' 'split -v' 'select 0' focus 'select 1' focus 'select 2' split focus 'select 3' focus
+
+# Bind region up/down to keys
+bind h focus left
+bind j focus up
+bind k focus down
+bind l focus right
+bind J resize
+# Bind region setup to a key
+bind o eval 'split -v' 'split -v' 'select 0' focus 'select 1' focus 'select 2' split focus 'select 3' focus
+
+vbell off
